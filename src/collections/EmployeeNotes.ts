@@ -1,10 +1,9 @@
 import { CollectionConfig } from 'payload';
 
-export const Users: CollectionConfig = {
-  slug: 'users',
-  auth: true,
+export const EmployeeNotes: CollectionConfig = {
+  slug: 'employee-notes',
   admin: {
-    useAsTitle: 'email',
+    useAsTitle: 'title',
   },
   access: {
     read: ({ req: { user } }) => user?.role === 'admin',
@@ -13,14 +12,15 @@ export const Users: CollectionConfig = {
     delete: ({ req: { user } }) => user?.role === 'admin',
   },
   fields: [
-    { name: 'firstName', type: 'text', required: true },
-    { name: 'lastName', type: 'text', required: true },
     {
-      name: 'role',
-      type: 'select',
-      options: ['admin', 'editor'],
+      name: 'title',
+      type: 'text',
       required: true,
-      defaultValue: 'editor',
+    },
+    {
+      name: 'note',
+      type: 'textarea', // puedes usar 'richText' si haces la sección bonus
+      required: true,
     },
   ],
 };
