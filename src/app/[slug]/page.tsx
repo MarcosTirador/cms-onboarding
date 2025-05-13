@@ -1,23 +1,35 @@
 import RenderBlocks from '../../components/RenderBlocks';
+import PageWrapper from '@/components/PageWrapper';
+import { getPayload } from 'payload';
+import config from '@/payload.config';
+import { cache } from 'react'
 
-async function getPageData(slug: string) {
-  const res = await fetch(`${process.env.PAYLOAD_URL}/api/pages?where[slug][equals]=${slug}`, {
-    cache: 'no-store',
-  });
-  const json = await res.json();
-  return json?.docs?.[0];
-}
+export const getPageData = cache(async ({ slug }: { slug: string }) => {
+  const payload = await getPayload({ config })
+
+  const result = await payload.find({
+    collection: 'pages',
+    where: {
+      slug: {
+        equals: slug,
+      },
+    },
+  })
+  console.log("Local API fetching slug:", slug)
+  console.log("Local API result:", result)
+
+  return result.docs?.[0] ?? null
+})
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-  const page = await getPageData(slug);
+  const slug = params.slug;
+  const page = await getPageData({slug});
 
   if (!page) return <div>Página no encontrada</div>;
-
   return (
-    <main>
-      <h1>{page.title}</h1>
+    <PageWrapper>
+      <h1 className="text-4xl font-bold mb-6">{page.title}</h1>
       <RenderBlocks blocks={page.layout} />
-    </main>
+    </PageWrapper>
   );
 }

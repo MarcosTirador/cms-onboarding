@@ -1,32 +1,19 @@
 'use client';
 import { useState } from 'react';
 
-type Props = {
-  title: string;
-  content: string;
-};
-
-export default function AccordionBlock({ title, content }: Props) {
+export default function AccordionBlock({ title, content }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div style={{ border: '1px solid #ccc', borderRadius: '4px', marginBottom: '1rem' }}>
+    <div className="border border-gray-200 rounded mb-4">
       <button
         onClick={() => setOpen(!open)}
-        style={{
-          width: '100%',
-          padding: '0.75rem 1rem',
-          background: '#f9fafb',
-          border: 'none',
-          textAlign: 'left',
-          fontWeight: 'bold',
-          cursor: 'pointer',
-        }}
+        className="w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 font-semibold"
       >
         {title} {open ? '▲' : '▼'}
       </button>
       {open && (
-        <div style={{ padding: '1rem', background: 'white' }}>
+        <div className="px-4 py-3 bg-blue text-gray-700">
           {content}
         </div>
       )}
