@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import type { Block } from 'payload';
-import Heading from './Heading';
-import Text from './Text';
-import Button from './Button';
-import Accordion from './Accordion';
+import Heading from '../Heading/Heading';
+import Text from '../Text/Text';
+import Button from '../Button/Button';
+import Accordion from '../Accordion/Accordion';
 
 const Grid: Block = {
   slug: 'grid',

@@ -1,6 +1,6 @@
 import { Block } from 'payload';
-import Heading from './Heading';
-import Text from './Text';
+import Heading from '../Heading/Heading';
+import Text from '../Text/Text';
 
 const Flex: Block = {
   slug: 'flex',

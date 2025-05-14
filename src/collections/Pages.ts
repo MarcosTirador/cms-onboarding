@@ -1,11 +1,11 @@
 import { CollectionConfig } from 'payload';
 import slug from '@/fields/slug'; // Este será un campo custom que conecta con el título
-import Heading from '@/blocks/Heading';
-import Flex from '@/blocks/Flex';
-import Button from '@/blocks/Button';
-import Text from '@/blocks/Text';
-import Accordion from '@/blocks/Accordion';
-import Grid from '@/blocks/Grid';
+import Heading from '@/blocks/Heading/Heading';
+import Flex from '@/blocks/Flex/Flex';
+import Button from '@/blocks/Button/Button';
+import Text from '@/blocks/Text/Text';
+import Accordion from '@/blocks/Accordion/Accordion';
+import Grid from '@/blocks/Grid/Grid';
 export const Pages: CollectionConfig = {
   slug: 'pages',
   admin: {

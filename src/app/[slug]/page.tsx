@@ -1,4 +1,4 @@
-import RenderBlocks from '../../components/RenderBlocks';
+import RenderBlocks from '../../blocks/RenderBlocks';
 import PageWrapper from '@/components/PageWrapper';
 import { getPayload } from 'payload';
 import config from '@/payload.config';
