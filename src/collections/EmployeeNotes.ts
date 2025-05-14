@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload';
+import { isAdmin } from '../access/isAdmin';
 
 export const EmployeeNotes: CollectionConfig = {
   slug: 'employee-notes',
@@ -6,10 +7,10 @@ export const EmployeeNotes: CollectionConfig = {
     useAsTitle: 'title',
   },
   access: {
-    read: ({ req: { user } }) => user?.role === 'admin',
-    create: ({ req: { user } }) => user?.role === 'admin',
-    update: ({ req: { user } }) => user?.role === 'admin',
-    delete: ({ req: { user } }) => user?.role === 'admin',
+    read:   isAdmin,
+    create: isAdmin,
+    update: isAdmin,
+    delete: isAdmin,
   },
   fields: [
     {

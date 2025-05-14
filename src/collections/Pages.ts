@@ -6,6 +6,10 @@ import Button from '@/blocks/Button/Button';
 import Text from '@/blocks/Text/Text';
 import Accordion from '@/blocks/Accordion/Accordion';
 import Grid from '@/blocks/Grid/Grid';
+import { isAdmin } from '../access/isAdmin';
+import { isAdminOrEditor } from '../access/isAdminOrEditor';
+
+
 export const Pages: CollectionConfig = {
   slug: 'pages',
   admin: {
@@ -14,9 +18,9 @@ export const Pages: CollectionConfig = {
   },
   access: {
     read: () => true, // tanto Admin como Editor pueden leer y usar páginas
-    create: ({ req: { user } }) => ['admin', 'editor'].includes(user?.role),
-    update: ({ req: { user } }) => ['admin', 'editor'].includes(user?.role),
-    delete: ({ req: { user } }) => user?.role === 'admin',
+    create: isAdminOrEditor,
+    update: isAdminOrEditor,
+    delete: isAdmin,
   },
   fields: [
     {
