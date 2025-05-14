@@ -79,12 +79,61 @@ export default function RenderBlocks({ blocks }: Props) {
               </div>
             );
 
+          case 'grid':
+            return (
+              <div
+                key={i}
+                className={`grid ${mapColumns(block.columns ?? 2)} ${mapGap(block.gap ?? 4)} mb-4`}
+              >
+                {block.children?.map((child: any, index: number) => (
+                  <div
+                    key={index}
+                    className="p-4 bg-white shadow rounded flex items-center justify-center text-center"
+                  >
+                    <RenderBlocks blocks={[child]} />
+                  </div>
+                ))}
+              </div>
+            );
+
+
           default:
             return null;
         }
       })}
     </>
   );
+}
+function mapGap(gap: number) {
+  switch (gap) {
+    case 0: return 'gap-0';
+    case 1: return 'gap-1';
+    case 2: return 'gap-2';
+    case 3: return 'gap-3';
+    case 4: return 'gap-4';
+    case 5: return 'gap-5';
+    case 6: return 'gap-6';
+    case 8: return 'gap-8';
+    case 10: return 'gap-10';
+    case 12: return 'gap-12';
+    case 16: return 'gap-16';
+    default: return 'gap-4';
+  }
+}
+
+function mapColumns(columns: number) {
+  switch (columns) {
+    case 1: return 'grid-cols-1';
+    case 2: return 'grid-cols-2';
+    case 3: return 'grid-cols-3';
+    case 4: return 'grid-cols-4';
+    case 5: return 'grid-cols-5';
+    case 6: return 'grid-cols-6';
+    case 8: return 'grid-cols-8';
+    case 10: return 'grid-cols-10';
+    case 12: return 'grid-cols-12';
+    default: return 'grid-cols-2'; // fallback
+  }
 }
 
 function getFontSize(size: string) {

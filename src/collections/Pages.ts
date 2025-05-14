@@ -5,6 +5,7 @@ import Flex from '@/blocks/Flex';
 import Button from '@/blocks/Button';
 import Text from '@/blocks/Text';
 import Accordion from '@/blocks/Accordion';
+import Grid from '@/blocks/Grid';
 export const Pages: CollectionConfig = {
   slug: 'pages',
   admin: {
@@ -28,7 +29,7 @@ export const Pages: CollectionConfig = {
       name: 'layout',
       type: 'blocks',
       blocks: [
-        Heading, Text, Flex, Button, Accordion
+        Heading, Text, Flex, Button, Accordion, Grid
         // Aquí luego agregarás los bloques como Heading, Text, Flex, etc.
       ],
     },

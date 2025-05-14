@@ -15,15 +15,13 @@ export const getPageData = cache(async ({ slug }: { slug: string }) => {
       },
     },
   })
-  console.log("Local API fetching slug:", slug)
-  console.log("Local API result:", result)
 
   return result.docs?.[0] ?? null
 })
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const slug = params.slug;
-  const page = await getPageData({slug});
+  const page = await getPageData({ slug });
 
   if (!page) return <div>Página no encontrada</div>;
   return (
